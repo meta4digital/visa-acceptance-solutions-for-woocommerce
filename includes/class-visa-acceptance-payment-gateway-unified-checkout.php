@@ -577,7 +577,8 @@ class Visa_Acceptance_Payment_Gateway_Unified_Checkout extends \WC_Payment_Gatew
 	 */
 	public function get_gateway_settings() {
 
-		return get_option( VISA_ACCEPTANCE_WOOCOMMERCE_UNDERSCORE . $this->get_id() . VISA_ACCEPTANCE_UNDERSCORE_SETTINGS, array() );
+		$settings = get_option( VISA_ACCEPTANCE_WOOCOMMERCE_UNDERSCORE . $this->get_id() . VISA_ACCEPTANCE_UNDERSCORE_SETTINGS, array() );
+		return apply_filters( 'visa_acceptance_solutions_get_gateway_settings', $settings, $this->get_id() );
 	}
 
 	/**
