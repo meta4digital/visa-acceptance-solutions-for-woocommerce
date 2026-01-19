@@ -150,7 +150,7 @@ class Visa_Acceptance_Payment_UC extends Visa_Acceptance_Request {
 	 */
 	public function get_uc_payment_response( $order, $transient_token, $is_save_card ) {
 		$settings     = $this->gateway->get_config_settings();
-		$gateway_settings = $this->gateway->get_gateway_settings();
+		$gateway_settings = $this->gateway->get_gateway_settings( $order );
 		$log_header       = ( VISA_ACCEPTANCE_TRANSACTION_TYPE_CHARGE === $gateway_settings['transaction_type'] ) ? ucfirst( VISA_ACCEPTANCE_TRANSACTION_TYPE_CHARGE ) : VISA_ACCEPTANCE_AUTHORIZATION;
 		$request          = new Visa_Acceptance_Payment_Adapter( $this->gateway );
 		$api_client       = $request->get_api_client();
